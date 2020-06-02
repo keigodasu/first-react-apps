@@ -1,11 +1,16 @@
 import React from "react";
-import "./App.css";
+import Contacts from "./components/Contacts";
+import Header from "./components/Header";
+import { Provider } from "./context";
 
 function App() {
   return (
-    <div className="App">
-      <h1>The App Componetn</h1>
-    </div>
+    <Provider>
+      <div className="App">
+        <Header branding="hoge"></Header>
+        <Contacts />
+      </div>
+    </Provider>
   );
 }
 
