@@ -1,17 +1,26 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Contacts from "./components/contacts/Contacts";
 import Header from "./components/layout/Header";
 import AddContact from "./components/contacts/AddContact";
 import { Provider } from "./context";
+import About from "./components/pages/About";
+import NotFound from "./components/pages/NotFound";
 
 function App() {
   return (
     <Provider>
-      <div className="App">
-        <Header branding="hoge"></Header>
-        <AddContact />
-        <Contacts />
-      </div>
+      <Router>
+        <div className="App">
+          <Header branding="hoge"></Header>
+          <Switch>
+            <Route exact path="/" component={Contacts}></Route>
+            <Route exact path="/about" component={About}></Route>
+            <Route exact path="/contact/add" component={AddContact}></Route>
+            <Route component={NotFound} />
+          </Switch>
+        </div>
+      </Router>
     </Provider>
   );
 }
